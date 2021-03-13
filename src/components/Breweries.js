@@ -8,7 +8,6 @@ export default function Breweries() {
   // const countries = [];
 
   function handleResponse(response) {
-    console.log(response.data);
     for (let i = 0; i < response.data.totalResults; i++) {
       let brewery = {
         country: response.data.data[i].locations,
@@ -18,7 +17,6 @@ export default function Breweries() {
       };
       breweryData.push(brewery);
     }
-    console.log(breweryData);
   }
 
   function getBreweries() {
@@ -32,7 +30,6 @@ export default function Breweries() {
   return (
     <div className="Breweries">
       {getBreweries()}
-      <h2>{breweryData.country}</h2>
       <ul>
         <Brewery data={breweryData}/>
       </ul>
