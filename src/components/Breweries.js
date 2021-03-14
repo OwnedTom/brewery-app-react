@@ -7,17 +7,17 @@ import '../style/Breweries.css';
 export default function Breweries() {
   const breweryData = [];
   // const countries = [];
-
+  
   function handleResponse(response) {
     for (let i = 0; i < response.data.totalResults; i++) {
       response.data.data[i].description = (typeof response.data.data[i].description !== "undefined") ? response.data.data[i].description: "no description available";
       response.data.data[i].images = (typeof response.data.data[i].images !== "undefined") ? response.data.data[i].images: "No logo available";
       response.data.data[i].locations = (typeof response.data.data[i].locations !== "undefined") ? response.data.data[i].locations: "No country available";
-
+      
       let brewery = {
         country: response.data.data[i].locations,
         name: response.data.data[i].name,
-        image: response.data.data[i].images,
+        image: response.data.data[i].images.squareMedium,
         description: response.data.data[i].description
       };
       breweryData.push(brewery);
@@ -36,7 +36,11 @@ export default function Breweries() {
     <div className="Breweries">
       {getBreweries()}
       <ul>
-        <Brewery data={breweryData}/>
+        {/* <Brewery data={breweryData[0]}/>
+        <Brewery data={breweryData[1]}/> */}
+        {breweryData.map(function (breweryCard) {
+          return <Brewery data={breweryCard} />
+        })}
       </ul>
     </div>
   );

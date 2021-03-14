@@ -4,31 +4,17 @@ import '../style/Brewery.css';
 
 export default function Breweries(props) {
 
-  function createCard(props) {    
-    // this function should loop through the breweryData array and create a card for each brewery
-    
-    for (let i = 0; i < props.length; i++) {
-      let name = props[i].name;
-      let description = props[i].description;
-      let image = props[i].image.squareMedium;
-
-      return (
-        <div className="card">
+  return (
+    <li className="Brewery">
+      <div className="card">
           <div className="card-container">
-            <h4>{name}</h4>
-            <p>{description}</p>
+            {/* <h4>{props.data.name}</h4> */}
+            {/* <p>{props.data.description}</p> */}
           </div>
           <div className="image">
-            <img src={image} alt={name} />
+            {/* <img src={props.data.image} alt={props.data.name} /> */}
           </div>
         </div>
-      )
-    }
-  }
-
-  return (
-    <div className="Brewery">
-      {createCard(props.data)}
-    </div>
+    </li>
   );
 }
