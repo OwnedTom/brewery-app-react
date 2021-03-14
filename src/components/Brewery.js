@@ -3,16 +3,23 @@ import React from "react";
 import '../style/Brewery.css';
 
 export default function Breweries(props) {
+
   function createCard(props) {    
-    for (let i = 0; i < props.data.length; i++) {
+    // this function should loop through the breweryData array and create a card for each brewery
+    
+    for (let i = 0; i < props.length; i++) {
+      let name = props[i].name;
+      let description = props[i].description;
+      let image = props[i].image.squareMedium;
+
       return (
         <div className="card">
           <div className="card-container">
-            <h4>{props.data[i].name}</h4>
-            <p>{props.data[i].description}</p>
+            <h4>{name}</h4>
+            <p>{description}</p>
           </div>
           <div className="image">
-            <img src={props.data[i].image.squareMedium} alt={props.data[i].name} />
+            <img src={image} alt={name} />
           </div>
         </div>
       )
@@ -21,7 +28,7 @@ export default function Breweries(props) {
 
   return (
     <div className="Brewery">
-      {createCard(props)}
+      {createCard(props.data)}
     </div>
   );
 }

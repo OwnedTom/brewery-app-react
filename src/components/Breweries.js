@@ -10,6 +10,10 @@ export default function Breweries() {
 
   function handleResponse(response) {
     for (let i = 0; i < response.data.totalResults; i++) {
+      response.data.data[i].description = (typeof response.data.data[i].description !== "undefined") ? response.data.data[i].description: "no description available";
+      response.data.data[i].images = (typeof response.data.data[i].images !== "undefined") ? response.data.data[i].images: "No logo available";
+      response.data.data[i].locations = (typeof response.data.data[i].locations !== "undefined") ? response.data.data[i].locations: "No country available";
+
       let brewery = {
         country: response.data.data[i].locations,
         name: response.data.data[i].name,
@@ -44,3 +48,7 @@ export default function Breweries() {
 //         image: response.data.data[i].images.medium,
 //         description: response.data.data[i].description
 //       });
+
+// {breweryData.list.slice().map(function (breweryItem) {
+//   return <Brewery data={breweryItem} />
+// })}
