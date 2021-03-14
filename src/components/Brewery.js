@@ -11,7 +11,9 @@ export default function Breweries(props) {
             <h4>{props.data[i].name}</h4>
             <p>{props.data[i].description}</p>
           </div>
-          <img src={props.data[i].image.squareMedium} alt={props.data[i].name} />
+          <div className="image">
+            <img src={props.data[i].image.squareMedium} alt={props.data[i].name} />
+          </div>
         </div>
       )
     }
