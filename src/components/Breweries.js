@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 
 import Brewery from "./Brewery";
+import '../style/Breweries.css';
 
 export default function Breweries() {
   const breweryData = [];
@@ -11,7 +12,7 @@ export default function Breweries() {
     for (let i = 0; i < response.data.totalResults; i++) {
       let brewery = {
         country: response.data.data[i].locations,
-        breweryName: response.data.data[i].name,
+        name: response.data.data[i].name,
         image: response.data.data[i].images,
         description: response.data.data[i].description
       };
