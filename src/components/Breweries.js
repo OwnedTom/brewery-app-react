@@ -15,7 +15,7 @@ export default function Breweries() {
       response.data.data[i].images = (typeof response.data.data[i].images !== "undefined") ? response.data.data[i].images: "No logo available";
       response.data.data[i].locations = (typeof response.data.data[i].locations !== "undefined") ? response.data.data[i].locations: "No country available";
       
-      // creates brewery object
+      // creates brewery object, more properties can be added
       let brewery = {
         country: response.data.data[i].locations,
         name: response.data.data[i].name,
