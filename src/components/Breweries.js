@@ -7,12 +7,15 @@ import '../style/Breweries.css';
 export default function Breweries() {
   const breweryData = [];
   
+  // iterates through the API ressults to make objects of the breweries and adds them to an array
   function handleResponse(response) {
     for (let i = 0; i < response.data.totalResults; i++) {
+      // gives a value to undefined properties
       response.data.data[i].description = (typeof response.data.data[i].description !== "undefined") ? response.data.data[i].description: "no description available";
       response.data.data[i].images = (typeof response.data.data[i].images !== "undefined") ? response.data.data[i].images: "No logo available";
       response.data.data[i].locations = (typeof response.data.data[i].locations !== "undefined") ? response.data.data[i].locations: "No country available";
       
+      // creates brewery object
       let brewery = {
         country: response.data.data[i].locations,
         name: response.data.data[i].name,
@@ -23,6 +26,7 @@ export default function Breweries() {
     }
   }
 
+  // calls the API
   function getBreweries() {
     let apiKey = "659d5c6b8f3d2447f090119e48202fdb";
     let breweryParameter = "breweries";
@@ -35,19 +39,9 @@ export default function Breweries() {
     <div className="Breweries">
       {getBreweries()}
       <ul>
+        {/* needs to be changed to a function that iterates through the Brewery component */}
         <Brewery data={breweryData}/>
       </ul>
     </div>
   );
 }
-
-// setBreweryData({
-//         country: response.data.data[i].locations[0].country.displayName,
-//         breweryName: response.data.data[i].name,
-//         image: response.data.data[i].images.medium,
-//         description: response.data.data[i].description
-//       });
-
-// {breweryData.list.slice().map(function (breweryItem) {
-//   return <Brewery data={breweryItem} />
-// })}

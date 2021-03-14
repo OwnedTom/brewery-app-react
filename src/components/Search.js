@@ -5,12 +5,18 @@ import '../style/Search.css';
 
 export default function Search() {
   const [searchQuery, setQuery] = useState("busch");
+  const breweryData = [];
 
   function handleResponse(response) {
-    console.log(response.data.data[0].breweries[0].images.squareMedium);
-    let name = response.data.data[0].breweries[0].name;
-    let description = response.data.data[0].breweries[0].description;
-    let image = response.data.data[0].breweries[0].images.squareMedium;
+    // needs aproximately the same functionalities as the handleResponse function in the Breweries component
+    for (let i = 0; i < response.data.totalResults; i++) {
+      let brewery = {
+        name: response.data.data[0].breweries[0].name,
+        description: response.data.data[0].breweries[0].description,
+        image: response.data.data[0].breweries[0].images.squareMedium,
+      }
+      breweryData.push(brewery);
+    }
   }
 
   // calls the API with the search
