@@ -6,7 +6,6 @@ import '../style/Breweries.css';
 
 export default function Breweries() {
   const breweryData = [];
-  // const countries = [];
   
   function handleResponse(response) {
     for (let i = 0; i < response.data.totalResults; i++) {
@@ -36,11 +35,7 @@ export default function Breweries() {
     <div className="Breweries">
       {getBreweries()}
       <ul>
-        {/* <Brewery data={breweryData[0]}/>
-        <Brewery data={breweryData[1]}/> */}
-        {breweryData.map(function (breweryCard) {
-          return <Brewery data={breweryCard} />
-        })}
+        <Brewery data={breweryData}/>
       </ul>
     </div>
   );
