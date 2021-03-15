@@ -31,7 +31,7 @@ export default function Breweries() {
     let apiKey = "659d5c6b8f3d2447f090119e48202fdb";
     let breweryParameter = "breweries";
     let locationParameter = "withLocations=Y";
-    let apiUrl = `https://sandbox-api.brewerydb.com/v2/${breweryParameter}/?key=${apiKey}&${locationParameter}`;
+    let apiUrl = `https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/${breweryParameter}/?key=${apiKey}&${locationParameter}`;
     axios.get(apiUrl).then(handleResponse);
   }
 
