@@ -23,7 +23,7 @@ export default function Search() {
   function getBreweries() {
     let apiKey = "659d5c6b8f3d2447f090119e48202fdb";
     let parameters = "withLocations=Y&withBreweries=Y";
-    let apiUrl = `https://sandbox-api.brewerydb.com/v2/search?q=${searchQuery}&type=beer&key=${apiKey}&${parameters}`;
+    let apiUrl = `https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search?q=${searchQuery}&type=beer&key=${apiKey}&${parameters}`;
     axios.get(apiUrl).then(handleResponse);
   }
  
