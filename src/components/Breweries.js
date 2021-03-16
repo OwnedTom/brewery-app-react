@@ -11,19 +11,35 @@ export default function Breweries() {
   
   // iterates through the API ressults to make objects of the breweries and adds them to an array
   function handleResponse(response) {
-    const breweries = response.data.data.map((data) => {
-      data.description = (typeof data.description !== "undefined") ? data.description: "no description available";
-      data.images = (typeof data.images !== "undefined") ? data.images: "No logo available";
-      data.locations = (typeof data.locations !== "undefined") ? data.locations: "No country available";
+    // const breweries = response.data.data.map((data) => {
+    //   data.description = (typeof data.description !== "undefined") ? data.description: "no description available";
+    //   data.images = (typeof data.images !== "undefined") ? data.images: "No logo available";
+    //   data.locations = (typeof data.locations !== "undefined") ? data.locations: "No country available";
       
-      // creates brewery object, more properties can be added
-      return {
-        name: data.name,
-        images: data.images,
-        description: data.description,
-        locations: data.locations
-      };
-    });
+    //   // creates brewery object, more properties can be added
+    //   return {
+    //     name: data.name,
+    //     images: data.images,
+    //     description: data.description,
+    //     locations: data.locations
+    //   };
+    // });
+    const breweries = [];
+    for (let i = 0; i < response.data.totalResults; i++) {
+      // gives a value to undefined properties
+      response.data.data[i].description = (typeof response.data.data[i].description !== "undefined") ? response.data.data[i].description: "no description available";
+      response.data.data[i].images = (typeof response.data.data[i].images !== "undefined") ? response.data.data[i].images: "No logo available";
+      response.data.data[i].locations = (typeof response.data.data[i].locations !== "undefined") ? response.data.data[i].locations: "No country available";
+
+      let brewery = {
+        name: response.data.data[i].name,
+        images: response.data.data[i].images,
+        description: response.data.data[i].description,
+        locations: response.data.data[i].locations
+      }
+
+      breweries.push(brewery);
+    }
     setBreweryData(breweries);
   }
 
