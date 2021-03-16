@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
 
-// import Brewery from "./Brewery";
+import Brewery from "./Brewery";
 import '../style/Breweries.css';
 
 export default function Breweries() {
-  const breweryData = [null];
+  const breweryData = [];
   
   // iterates through the API ressults to make objects of the breweries and adds them to an array
   function handleResponse(response) {
@@ -17,11 +17,12 @@ export default function Breweries() {
       
       // creates brewery object, more properties can be added
       let brewery = {
-        country: response.data.data[i].locations,
         name: response.data.data[i].name,
-        image: response.data.data[i].images.squareMedium,
-        description: response.data.data[i].description
+        images: response.data.data[i].images,
+        description: response.data.data[i].description,
+        locations: response.data.data[i].locations
       };
+      
       breweryData.push(brewery);
     }
   }
@@ -44,8 +45,7 @@ export default function Breweries() {
       {getBreweries()}
       <ul>
         {/* needs to be changed to a function that iterates through the Brewery component */}
-        {console.log(breweryData[2])}
-        {/* <Brewery data={breweryData}/> */}
+        <Brewery data={breweryData} />
       </ul>
     </div>
   );
