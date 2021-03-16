@@ -24,7 +24,11 @@ export default function Search() {
     let apiKey = "659d5c6b8f3d2447f090119e48202fdb";
     let parameters = "withLocations=Y&withBreweries=Y";
     let apiUrl = `https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/search?q=${searchQuery}&type=beer&key=${apiKey}&${parameters}`;
-    axios.get(apiUrl).then(handleResponse);
+    try {
+      axios.get(apiUrl).then(handleResponse);
+    } catch (error) {
+      console.error(error);
+    }
   }
  
   // Makes sure the page doesn't refresh after submitting the search query and calls the function to actually do the search

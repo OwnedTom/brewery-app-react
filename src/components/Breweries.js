@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
 
-import Brewery from "./Brewery";
+// import Brewery from "./Brewery";
 import '../style/Breweries.css';
 
 export default function Breweries() {
-  const breweryData = [];
+  const breweryData = [null];
   
   // iterates through the API ressults to make objects of the breweries and adds them to an array
   function handleResponse(response) {
@@ -32,7 +32,11 @@ export default function Breweries() {
     let breweryParameter = "breweries";
     let locationParameter = "withLocations=Y";
     let apiUrl = `https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/${breweryParameter}/?key=${apiKey}&${locationParameter}`;
-    axios.get(apiUrl).then(handleResponse);
+    try {
+      axios.get(apiUrl).then(handleResponse);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -40,7 +44,8 @@ export default function Breweries() {
       {getBreweries()}
       <ul>
         {/* needs to be changed to a function that iterates through the Brewery component */}
-        <Brewery data={breweryData}/>
+        {console.log(breweryData[2])}
+        {/* <Brewery data={breweryData}/> */}
       </ul>
     </div>
   );
